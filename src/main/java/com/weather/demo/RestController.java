@@ -11,7 +11,19 @@ public class RestController {
 
     @GetMapping("/weather")
     String getWeatherJSON() {
-        String name = weatherService.getWeatherDataFromAPI().getWeatherList().get(0).getName();
-        return name;
+        String name = getValue().getName();
+        String main = getWeather().getMain();
+        String description = getWeather().getDescription();
+        String icon = getWeather().getIcon();
+        return name + "\n" + main +"\n" + description + "\n" + icon;
     }
+
+    private Weather getWeather() {
+        return getValue().getWeather().get(0);
+    }
+
+    private Value getValue() {
+        return weatherService.getWeatherDataFromAPI().getWeatherList().get(0);
+    }
+
 }
