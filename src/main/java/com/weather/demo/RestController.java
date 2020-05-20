@@ -9,7 +9,7 @@ public class RestController {
     @Autowired
     WeatherService weatherService;
 
-    @GetMapping("/weather")
+  /*  @GetMapping("/weather")
     String getWeatherJSON() {
         String name = getValue().getName();
         String main = getWeather().getMain();
@@ -24,6 +24,13 @@ public class RestController {
 
     private Value getValue() {
         return weatherService.getWeatherDataFromAPI().getWeatherList().get(0);
+    }*/
+
+    @GetMapping("/weather")
+    String getWeatherJSON() {
+        return weatherService.getWeatherDataFromAPI().toString();
     }
+
+
 
 }
