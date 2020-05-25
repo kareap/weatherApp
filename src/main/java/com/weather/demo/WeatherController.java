@@ -11,28 +11,21 @@ public class WeatherController {
     @Autowired
     WeatherService weatherService;
 
-    @GetMapping("/breeze")
+    @GetMapping("/")
     String chooseCity() {
         return "start";
     }
 
-    @PostMapping("/breeze")
+    @PostMapping("/")
     String postCity(Model model, @RequestParam String city) {
-
-        int count = weatherService.checkCityAPI(city);
-        model.addAttribute("count", count);
-        model.addAttribute("city", city);
-        return city;
-    }
-
-    @GetMapping("/weather/{city}")
-    String getWeatherByCity(Model model, @PathVariable String city) {
         Weather weather = weatherService.getWeatherDataFromAPI(city);
-
-        model.addAttribute("city", city);
+        weather.setCount(weatherService.checkCityAPI(city));
+        model.addAttribute("count", weather.getCount());
         model.addAttribute("weather", weather);
+        model.addAttribute("city", city);
         return "weather";
     }
+
 
 
 }

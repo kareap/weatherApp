@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Breeze weather forecast</title>
 </head>
-<body th:object="${weather}">
+<body th:object="${weather}" >
 <div>Weather forecast</div>
  <h3 th:text="${city}"></h3>
-<div th:text="${weather.getMain()}"></div>
+<div th:text="*{main}"></div>
  <div th:text="*{description}"></div>
+<div th:if="${weather.count == '0'}">Whooops! No weather data for this city. Try another city...</div>
 <div></div>
 </body>
 </html>

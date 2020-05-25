@@ -7,7 +7,7 @@ public class Weather {
 
     private String main;
     private String description;
-    private int count;
+    private String count;
 
 
     public String getMain() {
@@ -26,11 +26,11 @@ public class Weather {
         this.description = description;
     }
 
-    public int getCount() {
+    public String getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(String count) {
         this.count = count;
     }
 
