@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>Start Page</title>
 </head>
-    <h3>Get the weather for (city):</h3>
-    <form th:action="'/post-city/' + ${city}" method="post">
-        <input type="text">insert city name here</input>
+    <h3>Get the weather for city</h3>
+    <form action="/breeze" method="post">
+        <input type="text" placeholder="City"/>
         <input type="submit" value="submit"/>
     </form>
+<div th:if="${count == 0}">Whooops! No weather data for this city. Try another city...</div>
 </body>
 </html>

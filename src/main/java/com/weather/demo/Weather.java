@@ -7,6 +7,7 @@ public class Weather {
 
     private String main;
     private String description;
+    private int count;
 
 
     public String getMain() {
@@ -25,7 +26,13 @@ public class Weather {
         this.description = description;
     }
 
+    public int getCount() {
+        return count;
+    }
 
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     @Override
     public String toString() {

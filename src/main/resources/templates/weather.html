@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Breeze weather forecast</title>
 </head>
-<body>
-
+<body th:object="${weather}">
+<div>Weather forecast</div>
+ <h3 th:text="${city}"></h3>
+<div th:text="${weather.getMain()}"></div>
+ <div th:text="*{description}"></div>
+<div></div>
 </body>
 </html>

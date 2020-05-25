@@ -9,10 +9,10 @@ public class RestController {
 
     @Autowired
     WeatherService weatherService;
-
+/*
     @GetMapping("/weather/{city}")
     String getWeatherJSON(@PathVariable String city) {
         return weatherService.getWeatherDataFromAPI(city).toString();
-    }
+    }*/
 
 }

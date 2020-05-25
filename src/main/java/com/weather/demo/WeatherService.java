@@ -15,11 +15,11 @@ public class WeatherService {
     @Autowired
     RestTemplate restTemplate;
 
-    String getCityNameFromApi(String city) {
+    int checkCityAPI(String city) {
         ResponseEntity<JsonNode> json = getJsonNodeResponseEntity(city);
-        JsonNode jsonNodeCityName = json.getBody().at("/list/0/name");
+        JsonNode count = json.getBody().at("count/");
 
-        return jsonNodeCityName.textValue();
+        return count.intValue();
     }
 
     Weather getWeatherDataFromAPI(String city) {
