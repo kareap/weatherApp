@@ -7,7 +7,7 @@ public class Weather {
 
     private String main;
     private String description;
-    private String icon;
+
 
     public String getMain() {
         return main;
@@ -25,20 +25,13 @@ public class Weather {
         this.description = description;
     }
 
-    public String getIcon() {
-        return icon;
-    }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
 
     @Override
     public String toString() {
         return "Weather{" +
                 "main='" + main + '\'' +
                 ", description='" + description + '\'' +
-                ", icon='" + icon + '\'' +
                 '}';
     }
 }

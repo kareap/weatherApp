@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Start Page</title>
+</head>
+    <h3>Get the weather for (city):</h3>
+    <form th:action="'/post-city/' + ${city}" method="post">
+        <input type="text">insert city name here</input>
+        <input type="submit" value="submit"/>
+    </form>
+</body>
+</html>
