@@ -18,14 +18,18 @@ public class WeatherController {
 
     @PostMapping("/")
     String postCity(Model model, @RequestParam String city) {
-        Weather weather = weatherService.getWeatherDataFromAPI(city);
-        weather.setCount(weatherService.checkCityAPI(city));
-        model.addAttribute("count", weather.getCount());
+        Weather weather = weatherService.getWeatherDescriptionFromAPI(city);
         model.addAttribute("weather", weather);
         model.addAttribute("city", city);
+
+        int temp = weatherService.getTemperatureFromAPI(city).getTemp();
+        model.addAttribute("temp", temp);
+
+        /*int count = weatherService.getCountFromAPI(city).getCount();
+        model.addAttribute("count", count);*/
+
         return "weather";
     }
-
 
 
 }

@@ -15,14 +15,7 @@ public class WeatherService {
     @Autowired
     RestTemplate restTemplate;
 
-    String checkCityAPI(String city) {
-        ResponseEntity<JsonNode> json = getJsonNodeResponseEntity(city);
-        JsonNode count = json.getBody().at("/count/");
-
-        return count.textValue();
-    }
-
-    Weather getWeatherDataFromAPI(String city) {
+    Weather getWeatherDescriptionFromAPI(String city) {
         ResponseEntity<JsonNode> json = getJsonNodeResponseEntity(city);
         JsonNode jsonNodeWeather = json.getBody().at("/list/0/weather/0");
 
@@ -30,6 +23,25 @@ public class WeatherService {
         weather.setMain(jsonNodeWeather.get("main").textValue());
         weather.setDescription(jsonNodeWeather.get("description").textValue());
 
+        return weather;
+    }
+
+    Weather getTemperatureFromAPI(String city) {
+        ResponseEntity<JsonNode> json = getJsonNodeResponseEntity(city);
+        JsonNode jsonNodeTemp = json.getBody().at("/list/0/main");
+
+        Weather weather = new Weather();
+        weather.setTemp(jsonNodeTemp.get("temp").intValue());
+
+        return weather;
+    }
+
+    Weather getCountFromAPI(String city) { //does city exist?
+        ResponseEntity<JsonNode> json = getJsonNodeResponseEntity(city);
+        JsonNode jsonNodeCount = json.getBody().at("/");
+
+        Weather weather = new Weather();
+        weather.setCount(jsonNodeCount.get("count").intValue());
         return weather;
     }
 
