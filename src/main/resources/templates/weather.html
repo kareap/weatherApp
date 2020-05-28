@@ -11,8 +11,7 @@
 <div th:text="*{description}"></div>
 <div th:text="'Temperature: '+${temp}"></div>
 
-<!--<div th:text="${count}"></div>-->
-<!--<div th:if="${count == '0'}">Whooops! No weather data for this city. Try another city...</div>-->
+<div th:text="${errorMessage}"></div>
 <div></div>
 </body>
 </html>

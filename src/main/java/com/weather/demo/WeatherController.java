@@ -18,6 +18,12 @@ public class WeatherController {
 
     @PostMapping("/")
     String postCity(Model model, @RequestParam String city) {
+        int count = weatherService.getCountFromAPI(city).getCount();
+        if(count == 0) {
+            String errorMessage = "Whoops, there is no weather-data available for the city. Try another city...";
+            model.addAttribute("errorMessage", errorMessage);
+        }
+
         Weather weather = weatherService.getWeatherDescriptionFromAPI(city);
         model.addAttribute("weather", weather);
         model.addAttribute("city", city);
@@ -25,8 +31,7 @@ public class WeatherController {
         int temp = weatherService.getTemperatureFromAPI(city).getTemp();
         model.addAttribute("temp", temp);
 
-        /*int count = weatherService.getCountFromAPI(city).getCount();
-        model.addAttribute("count", count);*/
+
 
         return "weather";
     }

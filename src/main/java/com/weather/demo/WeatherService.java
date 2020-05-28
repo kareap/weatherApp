@@ -38,10 +38,9 @@ public class WeatherService {
 
     Weather getCountFromAPI(String city) { //does city exist?
         ResponseEntity<JsonNode> json = getJsonNodeResponseEntity(city);
-        JsonNode jsonNodeCount = json.getBody().at("/");
 
         Weather weather = new Weather();
-        weather.setCount(jsonNodeCount.get("count").intValue());
+        weather.setCount(json.getBody().get("count").intValue());
         return weather;
     }
 
